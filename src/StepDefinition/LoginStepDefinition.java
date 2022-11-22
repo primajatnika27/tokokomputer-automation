@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class Login {
+public class LoginStepDefinition {
 
     WebDriver driver;
 
@@ -23,22 +23,24 @@ public class Login {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://blossomzones.com/");
+//        driver.get("https://blossomzones.com/");
+        driver.get("https://admin-demo.nopcommerce.com/");
+
     }
 
     @When("^I enter Username as \"([^\"]*)\" and Password as \"([^\"]*)\" into the field$")
     public void I_enter_Username_as_someusername_and_Password_as_somepassword_into_the_field(String username, String password) {
 
-        driver.findElement(By.cssSelector("#user_login")).clear();
-        driver.findElement(By.cssSelector("#user_login")).sendKeys(username);
+        driver.findElement(By.xpath("//input[@id='Email']")).clear();
+        driver.findElement(By.xpath("//input[@id='Email']")).sendKeys(username);
 
-        driver.findElement(By.className("#user_pass")).clear();
-        driver.findElement(By.className("#user_pass")).sendKeys(password);
+        driver.findElement(By.xpath("//input[@id='Password']")).clear();
+        driver.findElement(By.xpath("//input[@id='Password']")).sendKeys(password);
     }
 
     @And("^I click on Login button$")
     public void I_click_on_Login_button() {
-        driver.findElement(By.cssSelector("#wp-submit")).click();
+        driver.findElement(By.xpath(" //button[contains(text(),'Log in')]")).click();
     }
 
     @Then("User should be able to login based on \"([^\"]*)\" login status")

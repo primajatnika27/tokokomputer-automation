@@ -8,4 +8,5 @@ Feature: Login to Application https://admin-demo.nopcommerce.com/
 
     Examples:
       |someusername			|somepassword		|expected		|
-      |admin@yourstore.com	|admin				|q				|
+      |admin@yourstore.com	|admin				|success		|
+      |admin@yourstore.com	|abcd				|failure		|
