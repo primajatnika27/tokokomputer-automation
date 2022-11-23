@@ -13,9 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class SearchStepDefinition {
-
     WebDriver driver;
-
     @Given("user dashboard page")
     public void userDashboardPage() {
         WebDriverManager.chromedriver().setup();
