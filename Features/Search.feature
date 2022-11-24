@@ -3,7 +3,7 @@ Feature: Search Product
 
   @tag1
   Scenario Outline: Verify able to search product
-    Given user dashboard page
+    Given user navigate to application URL
     When input a product "<name>"
     And click button search
     Then display search "<result>"

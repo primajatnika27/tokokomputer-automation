@@ -14,14 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 public class SearchStepDefinition {
     WebDriver driver;
-    @Given("user dashboard page")
-    public void userDashboardPage() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-       driver.get("https://blossomzones.com/");
-    }
 
     @When("input a product {string}")
     public void inputAProduct(String product_name) {

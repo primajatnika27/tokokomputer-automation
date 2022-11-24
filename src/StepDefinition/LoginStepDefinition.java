@@ -16,18 +16,6 @@ public class LoginStepDefinition {
 
     WebDriver driver;
 
-    @Given("^I navigate to application URL$")
-    public void I_navigate_to_application_URL() {
-
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.get("https://blossomzones.com/");
-        driver.get("https://admin-demo.nopcommerce.com/");
-
-    }
-
     @When("^I enter Username as \"([^\"]*)\" and Password as \"([^\"]*)\" into the field$")
     public void I_enter_Username_as_someusername_and_Password_as_somepassword_into_the_field(String username, String password) {
 
