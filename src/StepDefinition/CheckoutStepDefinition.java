@@ -25,8 +25,15 @@ public class CheckoutStepDefinition {
     public void displayItemOnCart() {
         driver.findElement(By.xpath("//h1[contains(text(),'Cart')]")).isDisplayed();
         String empty = driver.findElement(By.xpath("//p[contains(text(),'Your cart is currently empty.')]")).getText();
+        if (empty.contains("Your cart is currently empty.")) {
+            ///ini kondisi jika cart kosong
+            Assert.assertEquals("Your cart is currently empty.", empty);
+        }
+        else {
+            ///ini kondisi jika ada item pada cart
+            Assert.assertEquals("", empty);
+        }
 
-        Assert.assertEquals("test", empty);
     }
 
     @When("user process to check out")
