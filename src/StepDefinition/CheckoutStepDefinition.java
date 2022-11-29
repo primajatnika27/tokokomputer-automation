@@ -33,6 +33,7 @@ public class CheckoutStepDefinition {
             ///ini kondisi jika ada item pada cart
             Assert.assertEquals("", empty);
         }
+
     }
 
     @When("user process to check out")
