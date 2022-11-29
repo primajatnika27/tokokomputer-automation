@@ -3,6 +3,7 @@ package StepDefinition;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -24,6 +25,8 @@ public class CheckoutStepDefinition {
     public void displayItemOnCart() {
         driver.findElement(By.xpath("//h1[contains(text(),'Cart')]")).isDisplayed();
         String empty = driver.findElement(By.xpath("//p[contains(text(),'Your cart is currently empty.')]")).getText();
+
+        Assert.assertEquals("test", empty);
     }
 
     @When("user process to check out")
