@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class RegisterStepDefinition {
     WebDriver driver;
 
@@ -33,18 +35,8 @@ public class RegisterStepDefinition {
 
     @Then("Customer got new account")
     public void customerGotNewAccount() {
-//        //		Alert alert = driver.switchTo().alert();
-//        String title = driver.getTitle();
-//        System.out.println(title);
-//        String actualResult = null;
-//
-//        if (title.contains("Your store. Login")) {
-//            actualResult = "success";
-//        } else {
-//            actualResult = "failure";
-//        }
-////
-////        Assert.assertEquals(expectedResult, actualResult);
+        /// Add Timeout for waiting load this element
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.quit();
     }
 }

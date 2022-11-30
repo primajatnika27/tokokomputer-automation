@@ -28,6 +28,8 @@ public class SearchStepDefinition {
 
     @Then("display search {string}")
     public void displaySearch(String expectedResult) {
+        /// Add Timeout for waiting load this element
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         String actualResult = driver.findElement(By.xpath("//p[contains(text(),'Nothing Found! Please refine your search and try a')]")).getText();
         if (expectedResult.contains(actualResult)) {
             actualResult = "Nothing Found! Please refine your search and try again.";
