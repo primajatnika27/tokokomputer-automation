@@ -15,5 +15,7 @@
     <orderEntry type="library" exported="" scope="TEST" name="junit" level="project" />
     <orderEntry type="library" exported="" name="io.github.bonigarcia.webdrivermanager" level="project" />
     <orderEntry type="library" exported="" name="seleniumhq.selenium.chrome.driver" level="project" />
+    <orderEntry type="library" exported="" name="projectlombok.lombok" level="project" />
+    <orderEntry type="library" exported="" name="log4j" level="project" />
   </component>
 </module>

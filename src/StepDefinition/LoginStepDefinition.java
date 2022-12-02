@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import steps.LoginStep;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,14 +17,11 @@ public class LoginStepDefinition {
 
     WebDriver driver;
 
-    @When("^I enter Username as \"([^\"]*)\" and Password as \"([^\"]*)\" into the field$")
-    public void I_enter_Username_as_someusername_and_Password_as_somepassword_into_the_field(String username, String password) {
+    private LoginStep step;
 
-        driver.findElement(By.xpath("//input[@id='Email']")).clear();
-        driver.findElement(By.xpath("//input[@id='Email']")).sendKeys(username);
-
-        driver.findElement(By.xpath("//input[@id='Password']")).clear();
-        driver.findElement(By.xpath("//input[@id='Password']")).sendKeys(password);
+    @When("^I enter Username as {username} and Password as {password} into the field$")
+    public void I_enter_Username_as_someusername_and_Password_as_somepassword_into_the_field(String username, String password) throws InterruptedException {
+        step.login(username, password);
     }
 
     @And("^I click on Login button$")
