@@ -27,7 +27,7 @@ public class CheckoutStepDefinition {
         driver.findElement(By.xpath("//body/div[@id='page']/div[@id='content']/div[1]/div[2]/div[1]/main[1]/div[1]/div[2]/div[3]/div[1]/div[1]/ul[1]/li[1]/a[3]")).click();
     }
 
-    @Then("display item on cart {expected}")
+    @Then("display item on cart {string}")
     public void displayItemOnCart(String expected) {
         /// Add Timeout for waiting load this element
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -56,7 +56,7 @@ public class CheckoutStepDefinition {
     }
 
 
-    @And("user fill the billing & shipping data {firstName} {lastName} {address} {postalCode} {phone} {email} {notes}")
+    @And("user fill the billing & shipping data {string} {string} {string} {string} {string} {string} {string}")
     public void userFillTheBillingShippingData(String firstName, String lastName, String billingAddress, String postalCode,String phone, String email, String notes) {
         /// Add Timeout for waiting load this element
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -76,7 +76,7 @@ public class CheckoutStepDefinition {
         driver.findElement(By.xpath("//button[@id='place_order']")).click();
     }
 
-    @Then("display order received page")
+    @Then("display order received page {string}")
     public void displayOrderReceivedPage(String expected) {
         /// Add Timeout for waiting load this element
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -90,4 +90,5 @@ public class CheckoutStepDefinition {
         }
         driver.quit();
     }
+
 }
