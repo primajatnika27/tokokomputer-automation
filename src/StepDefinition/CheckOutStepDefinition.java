@@ -75,6 +75,50 @@ public class CheckOutStepDefinition {
             Assert.assertEquals(expected, actualResult);
         }
 
+        //driver.quit();
+    }
+
+    @Given("user fill the billing & shipping data {string} {string} {string}{string}{string}{string} {string} {string} {string} {string}")
+    public void userFillTheBillingShippingData(String firstName, String lastName, String billingAddress,String state,String city,String district, String postalCode, String phone, String email, String notes) throws Throwable {
+        driver.findElement(By.xpath("//input[@id='terms']")).click();
+        driver.findElement(By.xpath("//input[@id='billing_first_name']")).sendKeys(firstName);
+        driver.findElement(By.xpath("//input[@id='billing_last_name']")).sendKeys(lastName);
+        driver.findElement(By.xpath("//textarea[@id='billing_address_1']")).sendKeys(billingAddress);
+        driver.findElement(By.id("select2-billing_state-container")).click();
+        driver.findElement(By.xpath("/html[1]/body[1]/span[1]/span[1]/span[2]/ul[1]/li["+state+"]")).click();
+        Thread.sleep(200);
+        driver.findElement(By.id("select2-billing_indo_ongkir_kota-container")).click();
+        driver.findElement(By.xpath("/html[1]/body[1]/span[1]/span[1]/span[2]/ul[1]/li["+city+"]")).click();
+        Thread.sleep(200);
+        driver.findElement(By.id("select2-billing_indo_ongkir_kecamatan-container")).click();
+        driver.findElement(By.xpath("/html[1]/body[1]/span[1]/span[1]/span[2]/ul[1]/li["+district+"]")).click();
+        Thread.sleep(200);
+        driver.findElement(By.xpath("//input[@id='billing_postcode']")).sendKeys(postalCode);
+        driver.findElement(By.xpath("//input[@id='billing_phone']")).sendKeys(phone);
+        driver.findElement(By.xpath("//input[@id='billing_email']")).sendKeys(email);
+        driver.findElement(By.xpath("//textarea[@id='order_comments']")).sendKeys(notes);
+        Thread.sleep(3000);
+    }
+
+
+    @When("user place order the check out data")
+    public void userPlaceOrderTheCheckOutData() {
+        driver.findElement(By.xpath("//button[@id='place_order']")).click();
+    }
+
+    @Then("display order received page {string}")
+    public void displayOrderReceivedPage(String expected) {
+
+        driver.findElement(By.xpath("//p[contains(text(),'Thank you. Your order has been received.')]")).isDisplayed();
+        String empty = driver.findElement(By.xpath("//p[contains(text(),'Thank you. Your order has been received.')]")).getText();
+        if (empty.contains("Your cart is currently empty.")) {
+            Assert.assertEquals(expected, empty);
+        } else {
+            Assert.assertFalse(true);
+        }
         driver.quit();
     }
+
+
 }
+

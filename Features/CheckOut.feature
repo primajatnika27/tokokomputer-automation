@@ -20,3 +20,13 @@ Feature: Checkout Item
     Examples:
       | expected                   |
       | Success show shipping page |
+
+  @Checkout
+  Scenario Outline: Verify able to process checkout
+    Given user fill the billing & shipping data "<firstName>" "<lastName>" "<address>""<state>""<city>""<district>" "<postalCode>" "<phone>" "<email>" "<notes>"
+    When user place order the check out data
+    Then display order received page "<expected>"
+    Examples:
+      | firstName | lastName | address | state | city | district | postalCode | phone        | email         | notes | expected                                 |
+      | try       | pane     | jakarta | 1     | 4    | 4        | 40287      | 088218998123 | try@gmail.com | -     | Thank you. Your order has been received. |
+
