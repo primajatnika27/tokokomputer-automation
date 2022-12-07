@@ -9,13 +9,15 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utils.GlobalUtils;
 
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class LoginStepDefinition {
 
     public static WebDriver driver;
+
+    GlobalUtils utils = new GlobalUtils();
 
     @Given("user navigate to check login page")
     public void userNavigateToLoginPage() {
@@ -50,8 +52,7 @@ public class LoginStepDefinition {
 
         String actualResult = null;
 
-        if (driver.findElement(By.xpath("//div[@id='login_error']")).isDisplayed()) {
-
+        if (utils.isElementPresent(driver, By.xpath("//div[@id='login_error']"))) {
             String errorLogin = driver.findElement(By.xpath("//div[@id='login_error']")).getText();
 
             System.out.println(errorLogin);
