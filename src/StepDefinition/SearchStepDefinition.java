@@ -7,13 +7,26 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utils.GlobalUtils;
 
 import java.util.concurrent.TimeUnit;
 
 public class SearchStepDefinition {
-    WebDriver driver;
+    public static WebDriver driver;
+
+    @Given("user navigate to application URL")
+    public void I_navigate_to_application_URL() {
+
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("https://blossomzones.com/");
+
+    }
 
     @When("input a product {string}")
     public void inputAProduct(String product_name) {
@@ -22,21 +35,27 @@ public class SearchStepDefinition {
     }
 
     @And("click button search")
-    public void clickButtonSearch() {
-        driver.findElement(By.cssSelector("body.home.page-template.page-template-template-homepage.page-template-template-homepage-php.page.page-id-126.wp-custom-logo.wp-embed-responsive.theme-storefront.woocommerce-js.storefront-secondary-navigation.storefront-align-wide.left-sidebar.woocommerce-active.storefront-site-logo-active.elementor-default.elementor-kit-22346:nth-child(2) div.hfeed.site:nth-child(1) div.header-widget-region div.col-full div.widget.widget_products_predictive_search:nth-child(1) div.wc_ps_bar:nth-child(2) div.wc_ps_container.wc_ps_sidebar_container:nth-child(3) form.wc_ps_form div.wc_ps_nav_right:nth-child(2) div.wc_ps_nav_submit > input.wc_ps_nav_submit_bt")).click();
+    public void clickButtonSearch() throws Throwable {
+        driver.findElement(By.xpath("//body/div[@id='page']/div[1]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]")).click();
+        Thread.sleep(3000);
     }
 
     @Then("display search {string}")
     public void displaySearch(String expectedResult) {
-        /// Add Timeout for waiting load this element
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        String actualResult = driver.findElement(By.xpath("//p[contains(text(),'Nothing Found! Please refine your search and try a')]")).getText();
-        if (expectedResult.contains(actualResult)) {
+        String actualResult = null;
+
+        GlobalUtils utils = new GlobalUtils();
+
+        System.out.println(utils.isElementPresent(driver, By.xpath("//p[contains(text(),'Nothing Found! Please refine your search and try again.')]")));
+
+        if (utils.isElementPresent(driver, By.xpath("//p[contains(text(),'Nothing Found! Please refine your search and try again.')]"))) {
             actualResult = "Nothing Found! Please refine your search and try again.";
+            Assert.assertEquals(expectedResult, actualResult);
         } else {
-            actualResult = "";
+            actualResult = "Success search item";
+            Assert.assertEquals(expectedResult, actualResult);
         }
-        Assert.assertEquals(expectedResult, actualResult);
+
         driver.quit();
     }
 }
