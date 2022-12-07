@@ -37,8 +37,4 @@ public class LandingPageStepDefinition {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://blossomzones.com/checkout");
     }
-
-
-
-
 }
