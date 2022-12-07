@@ -64,7 +64,7 @@ public class LoginStepDefinition {
                 driver.quit();
             }
         } else {
-            String title = driver.findElement(By.tagName("//head//title")).getText();
+            String title = driver.findElement(By.xpath("/html/head/title")).getText();
             System.out.println(title);
             actualResult = title;
 

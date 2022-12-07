@@ -1,4 +1,4 @@
-Feature: Chekout Item
+Feature: Checkout Item
 
   @AddItem
   Scenario Outline: Verify able to Add to chart

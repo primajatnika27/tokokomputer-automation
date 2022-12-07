@@ -1,4 +1,4 @@
-Feature: Login to Application https://admin-demo.nopcommerce.com/
+Feature: Login to Application
 
   @LoginTest
   Scenario Outline: User should only be able to login with valid credentials
