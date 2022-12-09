@@ -9,6 +9,28 @@ Feature: Login to Application
 
     Examples:
       | someusername                 | somepassword  | expected                                                                      |
-      |                              |               | Error: The username field is empty.                                           |
+#      |                              |               | Error: The username field is empty.                                           |
       | try123                       | superuser     | ERROR: The username or password you entered is incorrect. Lost your password? |
-      | primajatnika271995@gmail.com | Risingforce1! |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
