@@ -1,13 +1,14 @@
 @tag
 Feature: Search Product
 
-  @tag1
+  @SearchItem
   Scenario Outline: Verify able to search product
     Given user navigate to application URL
     When input a product "<name>"
     And click button search
     Then display search "<result>"
+
     Examples:
-      | name | result |
+      | name | result                                                  |
       | bola | Nothing Found! Please refine your search and try again. |
-      | vga | success |
+      | vga  | Success search item                                     |

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LandingPageStepDefinition {
     WebDriver driver;
-    @Given("^user navigate to application URL")
+    @Given("^user navigate to application URL path")
     public void I_navigate_to_application_URL() {
 
         WebDriverManager.chromedriver().setup();
@@ -37,8 +37,4 @@ public class LandingPageStepDefinition {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://blossomzones.com/checkout");
     }
-
-
-
-
 }

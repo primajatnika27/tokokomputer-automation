@@ -1,12 +1,36 @@
-Feature: Login to Application https://admin-demo.nopcommerce.com/
+Feature: Login to Application
 
+  @LoginTest
   Scenario Outline: User should only be able to login with valid credentials
-    Given user navigate to application URL
+    Given user navigate to check login page
     When I enter Username as "<someusername>" and Password as "<somepassword>" into the field
     And I click on Login button
     Then User should be able to login based on "<expected>" login status
 
     Examples:
-      |someusername			|somepassword		|expected		|
-      |admin@yourstore.com	|admin				|success		|
-      |admin@yourstore.com	|abcd				|failure		|
+      | someusername                 | somepassword  | expected                                                                      |
+#      |                              |               | Error: The username field is empty.                                           |
+      | try123                       | superuser     | ERROR: The username or password you entered is incorrect. Lost your password? |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
+#      | primajatnika271995@gmail.com | 123 |                                                                               |
