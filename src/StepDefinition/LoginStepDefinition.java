@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import utils.GlobalUtils;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class LoginStepDefinition {
@@ -39,6 +40,25 @@ public class LoginStepDefinition {
 
         driver.findElement(By.xpath("//input[@id='user_pass']")).clear();
         driver.findElement(By.xpath("//input[@id='user_pass']")).sendKeys(password);
+
+        if (utils.isElementPresent(driver, By.xpath("/html[1]/body[1]/div[1]/form[1]/div[2]/label[1]"))) {
+            String question = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/form[1]/div[2]/label[1]")).getText();
+            System.out.println("Ini Question");
+            System.out.println(question);
+
+            String[] split = question.split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)");
+            System.out.println(Arrays.toString(split));
+
+            int numA = Integer.parseInt(split[0]);
+            int numB = Integer.parseInt(split[2]);
+
+            int answer = numA + numB;
+
+            System.out.println(numA + numB);
+
+            driver.findElement(By.xpath("//input[@id='jetpack_protect_answer']")).sendKeys(String.valueOf(answer));
+        }
+
         Thread.sleep(3000);
     }
 
