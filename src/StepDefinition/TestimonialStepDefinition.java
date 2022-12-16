@@ -28,23 +28,28 @@ public class TestimonialStepDefinition {
     }
 
     @When("user input name {string} email {string} title {string} testimonial {string}")
-    public void userInputNameEmailTitleTestimonial(String arg0, String arg1, String arg2, String arg3) {
-        driver.findElement(By.xpath("//[@id=\"post-1060\"]/div/div[1]/form/input[1]")).clear();
-        driver.findElement(By.xpath("//[@id=\"post-1060\"]/div/div[1]/form/input[1]")).sendKeys(arg0);
+    public void userInputNameEmailTitleTestimonial(String name, String email, String title, String testimoni) throws Throwable {
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/input[1]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/input[1]")).sendKeys(name);
 
-        driver.findElement(By.xpath("//[@id=\"post-1060\"]/div/div[1]/form/input[2]']")).clear();
-        driver.findElement(By.xpath(" //[@id=\"post-1060\"]/div/div[1]/form/input[2]")).sendKeys(arg1);
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/input[2]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/input[2]")).sendKeys(email);
 
-        driver.findElement(By.xpath("//[@id=\"post-1060\"]/div/div[1]/form/input[3]")).clear();
-        driver.findElement(By.xpath("//[@id=\"post-1060\"]/div/div[1]/form/input[3]")).sendKeys(arg2);
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/input[3]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/input[3]")).sendKeys(title);
 
-        driver.findElement(By.xpath("//[@id=\"post-1060\"]/div/div[1]/form/textarea")).clear();
-        driver.findElement(By.xpath("//[@id=\"post-1060\"]/div/div[1]/form/textarea")).sendKeys(arg3);
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/textarea")).clear();
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/textarea")).sendKeys(testimoni);
+
+//        String captcha = driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/div/img")).getText();
+//        System.out.println("ini captcha");
+//        System.out.println(captcha);
+        Thread.sleep(300);
     }
 
     @And("user click on submit button")
     public void userClickOnSubmitButton() {
-        driver.findElement(By.xpath("//[@id=\"post-1060\"]/div/div[1]/form/span[2]/input[2]")).click();
+        driver.findElement(By.xpath("//*[@id=\"post-1060\"]/div/div[1]/form/span[2]/input[2]")).click();
     }
 
     @Then("testimonial created")

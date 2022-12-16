@@ -25,21 +25,22 @@ public class KonfirmasiPembayaranStepDefinition {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://blossomzones.com/konfirmasi-pembayaran/");
+        String title = driver.findElement(By.xpath("//h1[contains(text(),'Konfirmasi Pembayaran')]")).getText();
     }
 
     @When("user input name {string} email {string} no transaksi {string} jumlah transfer {string}")
-    public void userInputNameEmailNoTransaksiJumlahTransfer(String arg0, String arg1, String arg2, String arg3) {
-        driver.findElement(By.xpath("//[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[2]/span/input")).clear();
-        driver.findElement(By.xpath("//[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[2]/span/input")).sendKeys(arg0);
+    public void userInputNameEmailNoTransaksiJumlahTransfer(String name, String email, String no_transaksi, String jumlah_transfer) {
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[2]/span/input")).clear();
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[2]/span/input")).sendKeys(name);
 
-        driver.findElement(By.xpath("//[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[5]/span/input")).clear();
-        driver.findElement(By.xpath("//[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[5]/span/input")).sendKeys(arg1);
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[5]/span/input")).clear();
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[5]/span/input")).sendKeys(email);
 
-        driver.findElement(By.xpath("//[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[8]/span/input")).clear();
-        driver.findElement(By.xpath("//[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[8]/span/input")).sendKeys(arg2);
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[8]/span/input")).clear();
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[8]/span/input")).sendKeys(no_transaksi);
 
-        driver.findElement(By.xpath("//[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[12]/span/input")).clear();
-        driver.findElement(By.xpath("//[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[12]/span/input")).sendKeys(arg3);
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[12]/span/input")).clear();
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/p[12]/span/input")).sendKeys(jumlah_transfer);
     }
 
     @And("user click on submit button transaction")
@@ -49,6 +50,7 @@ public class KonfirmasiPembayaranStepDefinition {
 
     @Then("confirmation payment created")
     public void confirmationPaymentCreated() {
-        driver.quit();
+        driver.findElement(By.xpath("//*[@id=\"wpcf7-f3296-p3297-o1\"]/form/div[2]")).getText();
+        //driver.quit();
     }
 }
